@@ -1,0 +1,51 @@
+1 - author identification (would need to put different authors in train and test)
+		Possible features: Average Word Length, Average Sentence Length, Hapax Legomenon Ratio (fraction of unique words)
+		Best according: Turn sentences into glove vectors and feeed this to a RNN [try with Word2Vec?]
+
+Do not consider low frequency words, as these probably have to do with a certain topic of the blog, which we do not care about
+
+2
+		useful for forensic domain
+	 style-related and content-related
+		blog words
+		female bloggers use more pronouns and assent/negation words while male bloggers use more articles and prepositions. Also, female bloggers use blog words far more than do male bloggers, while male bloggers use more hyperlinks than do female bloggers
+		female writing tends to emphasize what Biber [3] calls “involvedness”, while male writing tends to emphasize “information”
+		Another point to note is that prepositions and articles, ich are used more frequently by male bloggers, are used r. Conversely, pronouns, assent/negation words and blog words, which are used more frequently by female bloggers, are used with decreasing frequency as bloggers get older.
+		Content:
+				These differences further suggest a pattern of more “personal” writing by female bloggers than male bloggers
+				male blogging is characterized by far more references to politics and technology.
+		Moreover, we must consider the possibility that some of the personal profiles provided by bloggers are bogus.
+		For the purposes of learning age and gender classifiers, each document is represented as a numerical vector in which each entry represented the frequency (normalized by document length) of a corresponding feature in some feature set. [try with sentences and RNNs?]
+		use of function words was successful in other papers
+		The stylistic features that we use are those mentioned earlier: parts-of-speech, function words, blog words and hyperlinks
+		Male bloggers of all ages write more about politics, technology and money than do their female cohorts. Female bloggers discuss their personal lives – and use more personal writing style – much more than males do.
+
+3:
+		individual authors are more likely to exhibit consistent habits of style than large classes of authors
+		The features include a list of 405 function words (which appear at least once in the corpus) and a list of n-grams of parts-of-speech using the BNC's tag set of 76 parts of speech
+		The use of parts-of-speech n-grams is a relatively efficient way to capture the heavier syntactic information shown
+		critical distinguishing features are different in fiction and non fiction
+		For example, the function words which s; female features – she, for, with, not. When training on non-fiction we find: male features – that, one; female features – for, with, not, and, in. Similar phenomena appear when using parts-of-speech. Elsewhere (Argamon et al, submitted) we have analyzed differences in usage between males and females for certain classes of words. The picture that emerges is that the male indicators are largely noun specifiers (determiners, numbers, modifiers) while the female indicators are mostly negation, pronouns and certain prepositions. Although a given feature’s Winnow weight does not necessarily reflect the feature’s mean frequency difference between males and females, a comparison of male and female usage of determiners, pronouns, prepositions, negation, and the conjunction and (Table 3) reveals significant differences in usage between males and females both in fiction and in non-fiction.
+
+Find top X words with highest information gain and use those. Same with POS n-grams (simply compute difference in percentage. The bigger the higher the information)
+
+Create multiple classifiers, combine the outputs of these classifiers and train a final classifier with all the outputs combined ^^ Each classifier trains on different things, ex one trains on word frequencies, the other trains on n-grams, the other on POS n-grams, word sizes?
+
+4:
+		interested in gender and language background of the author (ex. english first/second language)
+		It has been suggested by various researchers that women’s language makes more frequent use of emotionally intensive adverbs and adjectives such as “so”, “terribly”, “awfully”, “dreadful” and “quite” and that their language is more punctuated with attenuated assertions, apologies, questions, personal orientation and support”. On the other hand, male conversational patterns express “independence” and assertions of vertically hierarchical power. Men are more “proactive” by directing speech at solving problems while women are more “reactive” to the contributions of others, agreeing, understanding and supporting. Some features of men’s language are “strong assertions, aggressive, self-promotion, rhetorical questions, authoritative orientation, challenges and humor”. In brief, men’s on-line conversation resemble “report talk”, rather than “rapport talk” which women tend to favour.
+		Look at table 6. gender preferential language attributs  measure the frequency of use of adjectives, adverbs (mainly through the presence of suffixes) and apologies. This attribute set is a small subset of possible gender-preferential language attributes listed in the literature. Note that these attributes are not unique in the ability to discriminate between genders. Indeed some of the attributes listed in Table 5 are also capable of contributing to effective gender discrimination, though which ones is an open problem at this stage
+		the set of function words (attributes A31 to A152) are seen to be an important gender discriminator. This is as expected since function words has been shown to be a good author discriminator [11] as well as containing words that could belong to gender-preferential language (such as “so”, “very” etc.)
+
+Dont forget to scale(both before and middle)
+SVMs seem to be popular(papers are old)
+stop words may be equal to function words
+list of function words: https://semanticsimilarity.files.wordpress.com/2013/08/jim-oshea-fwlist-277.pdf (check whatt he stop words of nltk are first though)
+
+dont forget to use smoothing
+he vs they/she pronouns
+
+TF-IDF to see how important a word is to a corpus (2 corpuses). TFIDF is an alternative to using counts
+tfidf with n-grams?
+Dont forget about backoff and interpolation. (Katz Backoff) (nltk.model.ngram)
+Interpolated K-N Smoothing (bigram) [The standard]
