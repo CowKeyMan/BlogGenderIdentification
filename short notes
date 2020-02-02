@@ -49,3 +49,9 @@ TF-IDF to see how important a word is to a corpus (2 corpuses). TFIDF is an alte
 tfidf with n-grams?
 Dont forget about backoff and interpolation. (Katz Backoff) (nltk.model.ngram)
 Interpolated K-N Smoothing (bigram) [The standard]
+
+5:
+		Different types of bleaching
+		Mapped users to 'USER'
+		Mapped urls to 'URL'
+		Use of quotes and question marks more inictive of male
