@@ -1,4 +1,4 @@
-\documentclass{report}
+\documentclass{article}
 \usepackage{graphicx}
 \usepackage{listings}
 \usepackage{color}
@@ -8,6 +8,9 @@
 \usepackage[toc,page]{appendix}
 \usepackage{amsmath}
 \usepackage{hyperref}
+\usepackage{setspace}
+\doublespacing
+\large
 
 \definecolor{codegreen}{rgb}{0,0.6,0}
 \definecolor{codeblack}{rgb}{0,0,0}
@@ -38,32 +41,29 @@
 \lstset{style=mystyle}
 
 \begin{document}
-\title{ICS3206 - Machine Learning, Expert Systems and Fuzzy Logic - Assignment Report}
+\title{LIN3012 - Data-Driven Natural Language Processing}
 \author{Daniel Cauchi}
 \date{}
 \maketitle
 
-\tableofcontents
+%\tableofcontents
 
-\chapter{Introduction}
-The following is the report for ICS3206 - Machine Learning, Expert Systems and Fuzzy Logic, whose goal is to understand the fundamentals of Support Vector Machines(SVM), which were originally introduced by \cite{vapnik}, and evaluate their performance on the MNIST hand-written digit dataset.The report is structured into three parts: Description and mathematical background behind SVM, a comparison of SVM against other machine learning methods and the evaluation of SVM with regards to the MNIST dataset. For the implementation, python3 was used alongside Jupyter Notebooks. Attached are the notebooks, PDF versions of the notebooks and a script which can be used to classify an image using a previously trained classifier. The appendix section contains the plagiarism form and table of completion.
+\section{Introduction}
+In this report, the task of Gender Identification on a Blog Corpus is implemented trough the use of Natural Language Processing techniques. The goal is to build a classifier which is able to recognize the differences in writing style between male and female writers. The problem is to find the ideal features which will allow the classifier to discriminate best between male and female writers. For this approach, any feature which is related to topic is avoided, purely focusing on the style of writing. This is particularly difficult because the aim is to try and find similarities across an entire group of authors, because while individuals may have their own style of writing, it is more difficult to generalise the style of a set of people \cite{3}.
 
 
-\input{SubFiles/SVM}
-\pagebreak
-\input{SubFiles/SVMvsOtherMethods}
-\pagebreak
-\input{SubFiles/ImplementationAndEvaluation}
-\pagebreak
+The solution to the gender identification problem has applications in areas such as forensics \cite{2, 6} and cybercriminal analysis \cite{1}, so the idenity of a suspect may be narrowed down to one gender. Another application is in marketing \cite{6}, to find the demographic of some outlet.
+
+The following chapters will discuss previous work done in this area, a description of the corpus in question, the approach taken to solve this problem and an evaluation on the model built.
+
+\input{SubFiles/PreviousWork}
 
 \chapter{Conclusion}
-This concludes the report for the ICS3206 assignment component. SVM was discussed and explained via images and different metrics to evaluate the performance of the implemented SVMs were shown. 
 
-Attached are 2 Jupyter Notebooks within the 'Implementation' folder. The 'ExploreAndTrain' notebook contains the code for the visualisation of the dataset and training of it while the 'Classify' notebook shows the process of grabbing a pre-trained model and classifying new user input instances with it. Copies of these notebooks as PDFs are within the 'Implementation/PDFs' folder. A \textbf{Classify.py} script is also provided which can be run using python3 without the need of Jupyter Notebooks.
 
 \bibliography{main}
 \bibliographystyle{ieeetr}
 
-\input{Subfiles/Appendix}
+%\input{Subfiles/Appendix}
 
 \end{document}
