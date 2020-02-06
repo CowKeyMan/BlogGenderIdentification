@@ -1,0 +1,69 @@
+\documentclass{report}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{color}
+\usepackage[margin=1.2in]{geometry}
+\usepackage{courier}
+\usepackage{float}
+\usepackage[toc,page]{appendix}
+\usepackage{amsmath}
+\usepackage{hyperref}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codeblack}{rgb}{0,0,0}
+\definecolor{codered}{rgb}{0.867,0,0}
+\definecolor{backcolour}{rgb}{ 0.95,0.95,0.95}
+\definecolor{codeorange}{rgb}{1,0.447059,0}
+\definecolor{codegrey}{rgb}{0.1, 0.1, 0.1}
+\definecolor{codeblue}{rgb}{0.29, 0.52, 0.56}
+\lstdefinestyle{mystyle}{
+    basicstyle=\ttfamily\color{codeblack},
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codered},
+    keywordstyle=\color{codeorange},
+    numberstyle=\color{codeblack},
+    stringstyle=\color{codegreen},
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=10pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=3
+}
+ 
+\lstset{style=mystyle}
+
+\begin{document}
+\title{ICS3206 - Machine Learning, Expert Systems and Fuzzy Logic - Assignment Report}
+\author{Daniel Cauchi}
+\date{}
+\maketitle
+
+\tableofcontents
+
+\chapter{Introduction}
+The following is the report for ICS3206 - Machine Learning, Expert Systems and Fuzzy Logic, whose goal is to understand the fundamentals of Support Vector Machines(SVM), which were originally introduced by \cite{vapnik}, and evaluate their performance on the MNIST hand-written digit dataset.The report is structured into three parts: Description and mathematical background behind SVM, a comparison of SVM against other machine learning methods and the evaluation of SVM with regards to the MNIST dataset. For the implementation, python3 was used alongside Jupyter Notebooks. Attached are the notebooks, PDF versions of the notebooks and a script which can be used to classify an image using a previously trained classifier. The appendix section contains the plagiarism form and table of completion.
+
+
+\input{SubFiles/SVM}
+\pagebreak
+\input{SubFiles/SVMvsOtherMethods}
+\pagebreak
+\input{SubFiles/ImplementationAndEvaluation}
+\pagebreak
+
+\chapter{Conclusion}
+This concludes the report for the ICS3206 assignment component. SVM was discussed and explained via images and different metrics to evaluate the performance of the implemented SVMs were shown. 
+
+Attached are 2 Jupyter Notebooks within the 'Implementation' folder. The 'ExploreAndTrain' notebook contains the code for the visualisation of the dataset and training of it while the 'Classify' notebook shows the process of grabbing a pre-trained model and classifying new user input instances with it. Copies of these notebooks as PDFs are within the 'Implementation/PDFs' folder. A \textbf{Classify.py} script is also provided which can be run using python3 without the need of Jupyter Notebooks.
+
+\bibliography{main}
+\bibliographystyle{ieeetr}
+
+\input{Subfiles/Appendix}
+
+\end{document}
