@@ -29,29 +29,41 @@ Do not consider low frequency words, as these probably have to do with a certain
 
 Find top X words with highest information gain and use those. Same with POS n-grams (simply compute difference in percentage. The bigger the higher the information)
 
-Create multiple classifiers, combine the outputs of these classifiers and train a final classifier with all the outputs combined ^^ Each classifier trains on different things, ex one trains on word frequencies, the other trains on n-grams, the other on POS n-grams, word sizes?
-
 4:
 		interested in gender and language background of the author (ex. english first/second language)
 		It has been suggested by various researchers that women’s language makes more frequent use of emotionally intensive adverbs and adjectives such as “so”, “terribly”, “awfully”, “dreadful” and “quite” and that their language is more punctuated with attenuated assertions, apologies, questions, personal orientation and support”. On the other hand, male conversational patterns express “independence” and assertions of vertically hierarchical power. Men are more “proactive” by directing speech at solving problems while women are more “reactive” to the contributions of others, agreeing, understanding and supporting. Some features of men’s language are “strong assertions, aggressive, self-promotion, rhetorical questions, authoritative orientation, challenges and humor”. In brief, men’s on-line conversation resemble “report talk”, rather than “rapport talk” which women tend to favour.
 		Look at table 6. gender preferential language attributs  measure the frequency of use of adjectives, adverbs (mainly through the presence of suffixes) and apologies. This attribute set is a small subset of possible gender-preferential language attributes listed in the literature. Note that these attributes are not unique in the ability to discriminate between genders. Indeed some of the attributes listed in Table 5 are also capable of contributing to effective gender discrimination, though which ones is an open problem at this stage
 		the set of function words (attributes A31 to A152) are seen to be an important gender discriminator. This is as expected since function words has been shown to be a good author discriminator [11] as well as containing words that could belong to gender-preferential language (such as “so”, “very” etc.)
 
-Dont forget to scale(both before and middle)
-SVMs seem to be popular(papers are old)
-stop words may be equal to function words
 list of function words: https://semanticsimilarity.files.wordpress.com/2013/08/jim-oshea-fwlist-277.pdf (check whatt he stop words of nltk are first though)
-
-dont forget to use smoothing
-he vs they/she pronouns
-
-TF-IDF to see how important a word is to a corpus (2 corpuses). TFIDF is an alternative to using counts
-tfidf with n-grams?
-Dont forget about backoff and interpolation. (Katz Backoff) (nltk.model.ngram)
-Interpolated K-N Smoothing (bigram) [The standard]
 
 5:
 		Different types of bleaching
 		Mapped users to 'USER'
 		Mapped urls to 'URL'
 		Use of quotes and question marks more inictive of male
+
+6:
+		Predicts both age and gender
+		Good for marketing to see audience demographic
+		Section 2.1 contains information about our corpus
+		Fetures used:
+				Content based features:
+						 # of HTML links in the blog
+							# of named entities used
+							# of non-word errors
+							# of discourse relations within the text
+							# of quotations used in the text
+							# of references to past or future within the text
+							# of facts & figures used
+							# of times opinions are expressed
+							overall sentiment score of the blog
+							# of words having character flooding (like ’hellooooo’)
+				Style based features:
+						POS tag distribution
+						punctuation distribution
+						pronouns usage
+						average sentence length
+						uses of metaphors etc
+				Semantic features:
+						blog topics
