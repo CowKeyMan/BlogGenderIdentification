@@ -1,0 +1,9 @@
+\section{Data and Methodology}
+
+The corpus used is the Blog Authorship Corpus by \cite{2}. This is a corpus containing posts from 19320 blogs, with 9660 of them being male and another 9660 of them being female. In total there are 344773 male posts and 335010 posts. Other meta-data includes the age range of the bloggers and their star sign. These will not be considered. Other observations on the data include that there are some null posts, which will be pruned later on. Furthermore, some blogs are pure spam, with posts containing garbage such as advertisements or non-sense sentences. These will act as noise in the data. 
+
+The following 'general' features were extracted from the corpus for each post: Word Count, Sentence Count, Average Word Length, Average Sentence Length, Number of Unique Words/Word Count, Number of URLs/Word Count. The number of words ending with the following suffixes were also counted and divided by the Word Count: able, al, ful, ible, ic, ive, less, ly, ous. This list was obtained from \cite{4} The reason they were divided by the Word Count is because the length of a post may affect the frequency of words in general, hence the features are normalize by this value.
+
+A few vocabularies were created to extract some important words and bi-grams with regards to the posts. Prior to this however, the posts were split into a train and test set.
+
+% Discuss how data was bleached and pos were obtained, how bigrams were used. only done on training set, and those with high frequency but lowest entropy (highest IG) were chosen. How training and testing set were split.
