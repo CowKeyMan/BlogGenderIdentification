@@ -1,15 +1,32 @@
 \section{Results and Evaluation}
-The confusion matrix of the baseline model can be seen in figure \ref{fig:baseline} while that of the main model can be seen in figure \ref{fig:main}. The accuracy of the baseline ended up being 60\% while that of the main model ended up being the same at 60\%. These results are very similar and the base on the fact that the overall accuracy is above 50\% shows that some form of pattern was found. However, this score is still very inconclusive, especially when compared to the state of the art presented in \cite{2} which achieved an overall accuracy of 80.1\%. Next, the reasons as to why these results may have occurred are discussed.
+The confusion matrix of the baseline model can be seen in table \ref{tbl:baseline} while that of the main model can be seen in table \ref{tbl:main}. The accuracy of the baseline ended up being 60\% while that of the main model ended up being the same at 60\%. These results are very similar and based on the fact that the overall accuracy is above 50\% on a significant amount of data shows that some form of pattern was found. However, this score is still very inconclusive, especially when compared to the state-of-the-art presented in \cite{2} which achieved an overall accuracy of 80.1\%. Scaling was also later done on the data using the Standard Scaler provided by scikit-learn using the settings 'with mean' and 'with std', but the results were very similar. Next, the reasons as to why these results may have occurred are discussed.
 
-\begin{figure} \label{fig:baseline}
+\begin{table}[] \label{tbl:baseline}
+	\renewcommand{\arraystretch}{1.3}
 	\centering
-	\includegraphics[width=0.7\textwidth]{Images/LR-CM.png}
+	\begin{tabular}{|c|l|l|l|}
+		\hline
+		\multirow{3}{*}{\textbf{Actual}} & \textbf{Male}   & 36731 (57\%)  & 28067 (43\%)    \\ \cline{2-4} 
+		& \textbf{Female} & 27108 (36\%)  & 47192 (64\%)    \\ \cline{2-4} 
+		&                 & \textbf{Male} & \textbf{Female} \\ \hline
+		\multicolumn{1}{|l|}{}           & \multicolumn{3}{c|}{\textbf{Predicted}}           \\ \hline
+	\end{tabular}
 	\caption{Logistic Regression Model Confusion Matrix}
-\end{figure}
+\end{table}
 
-\begin{figure} \label{fig:main}
+\begin{table}[]\label{tbl:main}
+	\renewcommand{\arraystretch}{1.3}
 	\centering
-	\includegraphics[width=0.7\textwidth]{Images/MLP-CM.png}
+	\begin{tabular}{|c|l|l|l|}
+		\hline
+		\multirow{3}{*}{\textbf{Actual}} & \textbf{Male}   & 37067 (57\%)  & 27731 (43\%)    \\ \cline{2-4} 
+		& \textbf{Female} & 28352 (38\%)  & 45948 (62\%)    \\ \cline{2-4} 
+		&                 & \textbf{Male} & \textbf{Female} \\ \hline
+		\multicolumn{1}{|l|}{}           & \multicolumn{3}{c|}{\textbf{Predicted}}           \\ \hline
+	\end{tabular}
 	\caption{Multi Layer Perceptron Model Confusion Matrix}
-\end{figure}
+\end{table}
 
+Firstly, the reason why the state-of-the-art is so low is considered. This may be due to the fact that style varies by age, as pointed out by \cite{2}. It is stated that  as people grow older, the style starts resembling that of the male writing more and more. Therefore, as the data contains writers of mixed ages, it becomes increasingly difficult to distinguish between male and female writers. Another obstacle is the fact that each age group does not have the same amount of writers from both genders. In fact, there are more female teenage bloggers, while the older age range consists of mostly men. The final hurdle is the noise in the data, that is, the blogs with spam for content, as well as those bloggers whose authors have provided false information with regards to their identification \cite{2}.
+
+Next, the reason why this implementation yielded worse results is discussed. As pointed out by \cite{2}, using both style and content-based features yielded the best results. Content-based features however were deliberately avoided, to account for men and women writing about the same things. Furthermore, the number of bi-gram and function word features was trimmed down, so using more of these might increase accuracy. This, however, is likely to provide nothing more than a slight improvement, due to the fact that both frequency and information gain were taken into account, so the remaining bi-grams and function words should have little effect and also lead to more sparseness in the data. 

@@ -8,6 +8,8 @@
 \usepackage[toc,page]{appendix}
 \usepackage{amsmath}
 \usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{multirow}
 \usepackage{setspace}
 \doublespacing
 \large
@@ -41,26 +43,30 @@
 \lstset{style=mystyle}
 
 \begin{document}
-\title{LIN3012 - Data-Driven Natural Language Processing}
+\title{A Style-Based Approach to Gender Identification on Blogs}
 \author{Daniel Cauchi}
 \date{}
 \maketitle
 
-%\tableofcontents
+\section*{Abstract}
+While having bias is necessary to generalising beyond training data, it may sometimes lead to overfitting. Within the context of gender identification in text, more specifically in the blogging domain, one of these biases is usually the topic of the individual documents. This work attempts to study the problem of gender classification in text by using solely stylistic features.
 
 \section{Introduction}
-In this report, the task of Gender Identification on a Blog Corpus is implemented trough the use of Natural Language Processing techniques. The goal is to build a classifier which is able to recognize the differences in writing style between male and female writers. Usually, the issue of gender bias is one which researchers try to avoid, however in this case the opposite is required, where the features will be chosen to amplify this bias. The problem is to find the ideal features which will allow the generated model to discriminate best between male and female writers. For this approach, any feature which is related to topic is avoided, purely focusing on the style of writing. This is particularly difficult because the aim is to try and find similarities across an entire group of authors, because while individuals may have their own style of writing, it is more difficult to generalise the style of a set of people \cite{3}.
+In this study, the task of Gender Identification on a Blog Corpus is implemented trough the use of Natural Language Processing techniques. The goal is to build a classifier which is able to recognize the differences in writing style between male and female writers. Usually, in other natural language tasks such as text generation, the issue of gender bias is one which researchers try to avoid, in order to prevent the model from learning stereotypes. In this case, however, the opposite is required, where the features will be chosen to amplify this bias. The task is to find the ideal features which will allow the generated model to discriminate best between male and female writers. For this approach, any feature which is related to topic is avoided, purely focusing on the style of writing. This is particularly difficult because the aim is to try and find similarities across an entire group of authors, because while individuals may have their own style of writing, it is more difficult to generalise the style over a set of people \cite{3}.
 
-
-The solution to the gender identification problem has applications in areas such as forensics \cite{2, 6} and cyber criminal analysis \cite{1}, so the identity of a suspect may be narrowed down to one gender. Another application is in marketing \cite{6}, to find the demographic of some outlet.
+The solution to the gender identification problem has applications in areas such as forensics \cite{2} and cybercriminal analysis \cite{1}, so the identity of a suspect may be narrowed down to one gender. Another application is in marketing, to find the gender demographic of some outlet.
 
 The following chapters will discuss previous work done in this area, a description of the corpus in question, the approach taken to solve this problem and an evaluation on the model built.
 
 \input{SubFiles/PreviousWork}
 \input{SubFiles/DataAndMethodology}
 \input{SubFiles/ResultsAndEvaluation}
+\input{SubFiles/FutureWork} % different n-grams, using more features, testing with specific ge ranges only, filtering the data for spam accounts
 
 \section{Conclusion}
+This study  has presented a way of distinguishing between gender writing styles in the blogging domain. The method presented does not consider topic, but rather only makes use of style-based features. As such, it does not improve upon the state-of-the-art, but presents a new way of trying to tackle this problem. Almost all the features used, except for a few such as 'Number of URL links' could have been used in other text domains, besides blogging. Although the decisions made were done deliberately to try and reduce the amount of bias of the domain as much as possible, the classification score suffers as a result.
+
+While much has been studied already, it is clear that more work needs to be done in this area to determine which features may distinguish well between the style of writing between the genders. This is especially the case for the less biased approach of classification, where style is the only focus, without the effect of topic.
 
 \pagebreak
 
